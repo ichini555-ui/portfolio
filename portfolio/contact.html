@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | 連絡</title>
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+    <body class="page-contact">
+        <header class="header">
+            <div class="container nav-container">
+                <a href="index.html" class="logo">ポートフォリオ</a>
+                <div class="nav-right" style="display: flex; align-items: center; gap: 15px;">
+                    <nav class="nav" id="nav-menu">
+                        <ul class="nav-list">
+                            <li><a href="index.html">自己紹介</a></li>
+                            <li><a href="skills.html">スキル</a></li>
+                            <li><a href="projects.html">プロジェクト</a></li>
+                            <li><a href="contact.html" class="active">連絡</a></li>
+                        </ul>
+                    </nav>
+                    <button id="theme-toggle" class="theme-btn" title="テーマを切り替える">🌙</button>
+                    <button class="burger" id="burger-btn" aria-label="メニュー">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="container" style="margin-top: 100px;">
+            <section class="section text-center">
+                <h2>連絡</h2>
+                <p style="margin-bottom: 10px;">ITエンジニアとして成長し、貢献できる機会を楽しみにしております。</p>
+                <p style="margin-bottom: 5px;">Email: <a href="mailto:ichini555@gmail.com">ichini555@gmail.com</a></p>
+                <p>GitHub: <a href="https://github.com" target="_blank">github.com/ichinisan16</a></p>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2026 Vitalii Charikov. All rights reserved.</p>
+            </div>
+        </footer>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const themeToggle = document.getElementById("theme-toggle");
+                const body = document.body;
+
+                // Проверяем, какая тема была выбрана ранее
+                if (localStorage.getItem("theme") === "dark") {
+                    body.classList.add("dark-theme");
+                    if (themeToggle) themeToggle.textContent = "☀️";
+                }
+
+                // Переключение по клику
+                if (themeToggle) {
+                    themeToggle.addEventListener("click", () => {
+                        body.classList.toggle("dark-theme");
+
+                        if (body.classList.contains("dark-theme")) {
+                            localStorage.setItem("theme", "dark");
+                            themeToggle.textContent = "☀️";
+                        } else {
+                            localStorage.setItem("theme", "light");
+                            themeToggle.textContent = "🌙";
+                        }
+                    });
+                }
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const burgerBtn = document.getElementById("burger-btn");
+                const navMenu = document.getElementById("nav-menu");
+
+                if (burgerBtn && navMenu) {
+                    // Открытие/закрытие по клику на бургер
+                    burgerBtn.addEventListener("click", () => {
+                        burgerBtn.classList.toggle("active");
+                        navMenu.classList.toggle("active");
+                    });
+
+                    // Автоматическое закрытие меню при клике на любую ссылку в нем
+                    const navLinks = navMenu.querySelectorAll("a");
+                    navLinks.forEach(link => {
+                        link.addEventListener("click", () => {
+                            burgerBtn.classList.remove("active");
+                            navMenu.classList.remove("active");
+                        });
+                    });
+                }
+            });
+        </script>
+    </body>
+</html>
