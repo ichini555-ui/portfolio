@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | 自己PR</title>
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+
+    <body class="page-index">
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">ポートフォリオ</a>
+            <div class="nav-right" style="display: flex; align-items: center; gap: 15px;">
+            <nav class="nav" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="active">自己紹介</a></li>
+                    <li><a href="skills.html">スキル</a></li>
+                    <li><a href="projects.html">プロジェクト</a></li>
+                    <li><a href="contact.html">連絡</a></li>
+                </ul>
+            </nav>
+                <button id="theme-toggle" class="theme-btn" title="テーマを切り替える">🌙</button>
+                <button class="burger" id="burger-btn" aria-label="メニュー">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    </button>
+                </div>
+</div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>お世話になっております</h1>
+            <p>日本国際工科専門学校のヴィタリーと申します。
+            よろしくお願いいたします。</p>
+            <a href="projects.html" class="btn">プロジェクトの紹介</a>
+        </div>
+    </section>
+
+    <main class="container">
+        <section class="section">
+            <h2>自己PR</h2>
+            <p class="about-text">
+                社会人として働く中で、私が最も大切にしてきたことは、周囲との信頼関係を築きながら責任を持って最後までやり遂げることです。
+                
+                私はロシアの大学で石油・ガス井掘削工学を専攻し、卒業後は石油・ガス業界で実務経験を積みました。安全性や正確性が求められる環境の中で、周囲と連携しながら責任を持って業務に取り組み、課題に直面した際にも粘り強く解決策を考え、最後までやり遂げる姿勢を身につけました。その後、自分自身の可能性をさらに広げたいという思いからIT業界への挑戦を決意し、来日しました。現在は専門学校でシステム開発に必要な基礎知識やプログラミングを積極的に学んでいます。異なる分野への挑戦には努力が必要ですが、新しい知識や技術を学ぶことに大きなやりがいを感じています。これまで培ってきた責任感や協調性、そして最後までやり抜く姿勢を活かし、一日でも早く周囲から信頼されるエンジニアとして成長し、貴社に貢献していきたいと考えています。
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Vitalii Charikov. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const themeToggle = document.getElementById("theme-toggle");
+            const body = document.body;
+
+            
+            if (localStorage.getItem("theme") === "dark") {
+                body.classList.add("dark-theme");
+                if (themeToggle) themeToggle.textContent = "☀️";
+            }
+
+           
+            if (themeToggle) {
+                themeToggle.addEventListener("click", () => {
+                    body.classList.toggle("dark-theme");
+
+                    if (body.classList.contains("dark-theme")) {
+                        localStorage.setItem("theme", "dark");
+                        themeToggle.textContent = "☀️";
+                    } else {
+                        localStorage.setItem("theme", "light");
+                        themeToggle.textContent = "🌙";
+                    }
+                });
+            }
+        });
+    </script> 
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const burgerBtn = document.getElementById("burger-btn");
+            const navMenu = document.getElementById("nav-menu");
+
+            if (burgerBtn && navMenu) {
+                
+                burgerBtn.addEventListener("click", () => {
+                    burgerBtn.classList.toggle("active");
+                    navMenu.classList.toggle("active");
+                });
+
+               
+                const navLinks = navMenu.querySelectorAll("a");
+                navLinks.forEach(link => {
+                    link.addEventListener("click", () => {
+                        burgerBtn.classList.remove("active");
+                        navMenu.classList.remove("active");
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
